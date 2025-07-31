@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>To-Do List</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f6f8;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      background-color: #fff;
+      border-radius: 10px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    input[type="text"] {
+      width: 70%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px 15px;
+      font-size: 16px;
+      margin-left: 5px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+
+    li {
+      background-color: #f9f9f9;
+      padding: 12px 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .delete-btn {
+      background-color: #e74c3c;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .delete-btn:hover {
+      background-color: #c0392b;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Today’s Tasks to Complete</h1>
+
+  <input id="text" placeholder="What do you need to do?" />
+  <button onclick="add()">Add</button>
+
+  <ul id="add-list">
+    <li>Are you awake?
+      <button class="delete-btn" onclick="dell(event)">Del</button>
+    </li>
+  </ul>
+
+  <script>
+    var ul = document.getElementById("add-list");
+
+    function add() {
+      var input = document.getElementById("text");
+      var value = input.value.trim();
+
+      if (value === "") {
+        alert("Please enter a task.");
+        return;
+      }
+
+      var listing = document.createElement("li");
+      listing.innerHTML = value + " <button class='delete-btn' onclick='dell(event)'>Del</button>";
+
+      ul.append(listing);
+      input.value = "";
+      input.focus();
+    }
+
+    function dell(event) {
+      event.target.parentElement.remove();
+    }
+  </script>
+
+</body>
+</html>
+
+
